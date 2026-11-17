@@ -1,0 +1,174 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <span class="brand">Psy<span class="brand-accent">Shop</span></span>
+      — Mis pedidos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="orders-container">
+
+    <section class="orders-hero">
+      <div>
+        <span class="eyebrow">TU ACTIVIDAD</span>
+        <h1>Mis pedidos</h1>
+        <p>Consulta tus compras y el estado de cada pedido.</p>
+      </div>
+
+      <div class="hero-icon">
+        <ion-icon name="receipt-outline"></ion-icon>
+      </div>
+    </section>
+
+    @if (!auth.isLoggedIn()) {
+      <div class="orders-empty">
+        <div class="empty-icon">
+          <ion-icon name="receipt-outline"></ion-icon>
+        </div>
+
+        <h3>Inicia sesión para ver tus compras</h3>
+        <p>
+          Inicia sesión en tu cuenta de PsyShop para consultar tus pedidos,
+          los videojuegos que compraste y el estado de cada entrega.
+        </p>
+
+        <ion-button
+          class="primary-button"
+          routerLink="/tabs/perfil">
+          Iniciar sesión
+        </ion-button>
+      </div>
+    } @else if (loading) {
+      <div class="orders-empty">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando tus pedidos...</p>
+      </div>
+    } @else {
+      <section class="orders-stats">
+        <article class="stat-card">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+          <span>Total de pedidos</span>
+          <strong>{{ totalOrders }}</strong>
+        </article>
+
+        <article class="stat-card">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Pendientes</span>
+          <strong>{{ pendingOrders }}</strong>
+        </article>
+
+        <article class="stat-card">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <span>Completados</span>
+          <strong>{{ completedOrders }}</strong>
+        </article>
+      </section>
+
+      <section class="orders-section">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HISTORIAL</span>
+            <h2>Mis compras</h2>
+          </div>
+
+          <ion-button
+            fill="clear"
+            (click)="loadOrders()"
+            aria-label="Actualizar pedidos">
+            <ion-icon name="refresh-outline" slot="start"></ion-icon>
+            Actualizar
+          </ion-button>
+        </div>
+
+        @if (errorMessage) {
+          <ion-card>
+            <ion-card-content>
+              <ion-text color="danger">
+                <p>{{ errorMessage }}</p>
+              </ion-text>
+
+              <ion-button expand="block" (click)="loadOrders()">
+                Intentar nuevamente
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        } @else if (orders.length === 0) {
+          <div class="orders-empty">
+            <div class="empty-icon">
+              <ion-icon name="game-controller-outline"></ion-icon>
+            </div>
+
+            <h3>Tu historial te espera</h3>
+            <p>Todavía no tienes pedidos registrados en tu cuenta.</p>
+
+            <ion-button
+              class="primary-button"
+              routerLink="/tabs/catalogo">
+              Explorar videojuegos
+              <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        } @else {
+          @for (order of orders; track order.id) {
+            <ion-card class="order-card">
+              <ion-card-content>
+                <div class="order-top">
+                  <div>
+                    <span class="eyebrow">NÚMERO DE PEDIDO</span>
+                    <h3>#{{ order.id }}</h3>
+                    <p>{{ formatDate(order.created_at) }}</p>
+                  </div>
+
+                  <ion-badge [color]="statusColor(order.status)">
+                    {{ statusLabel(order.status) }}
+                  </ion-badge>
+                </div>
+
+                <div class="order-customer">
+                  <strong>Datos de entrega</strong>
+                  <p>{{ order.customer_name }}</p>
+                  <p>{{ order.delivery_address }}</p>
+                </div>
+
+                <div class="order-products">
+                  <strong>Videojuegos</strong>
+
+                  @for (item of order.items; track item.id) {
+                    <div class="order-product">
+                      <div>
+                        <strong>{{ item.game?.title ?? 'Videojuego' }}</strong>
+                        <p>
+                          Cantidad: {{ item.quantity }} ×
+                          {{ formatPrice(item.unit_price) |
+                            currency:'USD':'symbol':'1.2-2' }}
+                        </p>
+                      </div>
+
+                      <strong>
+                        {{ formatPrice(item.subtotal) |
+                          currency:'USD':'symbol':'1.2-2' }}
+                      </strong>
+                    </div>
+                  }
+                </div>
+
+                <div class="order-total">
+                  <span>Total del pedido</span>
+                  <strong>
+                    {{ formatPrice(order.total) |
+                      currency:'USD':'symbol':'1.2-2' }}
+                  </strong>
+                </div>
+
+                
+              </ion-card-content>
+            </ion-card>
+          }
+        }
+      </section>
+    }
+  </main>
+</ion-content>

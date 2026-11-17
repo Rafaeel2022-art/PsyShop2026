@@ -1,0 +1,263 @@
+<ion-content [fullscreen]="true">
+  <main class="store">
+
+    <!-- PRESENTACIÓN PRINCIPAL -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">TU TIENDA GAMING</span>
+
+        <h1>
+          TU PRÓXIMA AVENTURA
+          <span>COMIENZA AQUÍ.</span>
+        </h1>
+
+        <p>
+          Descubre videojuegos increíbles para PlayStation.
+          Tu siguiente historia comienza con PsyShop.
+        </p>
+
+        <button
+          type="button"
+          class="hero-button"
+          (click)="explorarCatalogo()">
+          EXPLORAR CATÁLOGO <span>→</span>
+        </button>
+
+        <div class="hero-stats">
+          <div>
+            <strong>PS4 / PS5</strong>
+            <small>Plataformas</small>
+          </div>
+
+          <div>
+            <strong>100%</strong>
+            <small>Gaming</small>
+          </div>
+
+          <div>
+            <strong>PsyShop</strong>
+            <small>Tu próximo juego</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO DE YOUTUBE -->
+      <div class="hero-art">
+        <div class="hero-image-container">
+<iframe
+  class="hero-video"
+  src="https://www.youtube-nocookie.com/embed/N6f30RVHOVw?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=N6f30RVHOVw"
+  title="Presentación de PlayStation 5"
+  allow="autoplay; encrypted-media; picture-in-picture"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+</div>
+
+        <div class="art-caption">LEVEL UP YOUR GAME</div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalog" id="catalogo">
+
+      <div class="catalog-heading">
+        <div>
+          <span class="eyebrow">SELECCIÓN PsyShop</span>
+
+          <h2>Videojuegos destacados<span>.</span></h2>
+
+          <!-- BÚSQUEDA Y FILTROS -->
+          <div class="catalog-filters">
+
+            <ion-searchbar
+              placeholder="Buscar videojuegos..."
+              aria-label="Buscar videojuegos"
+              [debounce]="200"
+              (ionInput)="onSearch($event)"
+              [value]="searchTerm">
+            </ion-searchbar>
+
+            <ion-select
+              aria-label="Filtrar por plataforma"
+              placeholder="Todas las plataformas"
+              interface="popover"
+              [value]="selectedPlatform"
+              (ionChange)="onPlatformChange($event)">
+
+              <ion-select-option value="">
+                Todas las plataformas
+              </ion-select-option>
+
+              @for (platform of platforms; track platform) {
+                <ion-select-option [value]="platform">
+                  {{ platform }}
+                </ion-select-option>
+              }
+            </ion-select>
+
+            <ion-select
+              aria-label="Filtrar por género"
+              placeholder="Todos los géneros"
+              interface="popover"
+              [value]="selectedGenre"
+              (ionChange)="onGenreChange($event)">
+
+              <ion-select-option value="">
+                Todos los géneros
+              </ion-select-option>
+
+              @for (genre of genres; track genre) {
+                <ion-select-option [value]="genre">
+                  {{ genre }}
+                </ion-select-option>
+              }
+            </ion-select>
+
+            <ion-button fill="clear" (click)="clearFilters()">
+              Limpiar filtros
+            </ion-button>
+
+          </div>
+
+          <p class="results-count">
+            {{ filteredGames.length }} videojuegos encontrados
+          </p>
+
+          <p>Encuentra tu próxima aventura.</p>
+        </div>
+
+        <span class="catalog-count">
+          {{ games.length }} videojuegos
+        </span>
+      </div>
+
+      <!-- CARGANDO -->
+      @if (loading) {
+        <div class="loading">
+          <ion-spinner name="crescent"></ion-spinner>
+          <p>Cargando catálogo...</p>
+        </div>
+      }
+
+      <!-- ERROR -->
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <!-- CATÁLOGO VACÍO -->
+      @if (!loading && !errorMessage && games.length === 0) {
+        <div class="empty-state">
+          <h3>Pronto habrá novedades</h3>
+          <p>No hay videojuegos disponibles en este momento.</p>
+        </div>
+      }
+
+      <!-- SIN RESULTADOS DE BÚSQUEDA -->
+      @if (!loading && !errorMessage && games.length > 0 && filteredGames.length === 0) {
+        <div class="empty-state">
+          <ion-icon name="search-outline"></ion-icon>
+          <h3>No encontramos videojuegos</h3>
+          <p>Prueba con otro nombre o modifica los filtros.</p>
+
+          <ion-button fill="outline" (click)="clearFilters()">
+            Limpiar búsqueda
+          </ion-button>
+        </div>
+      }
+
+      <!-- TARJETAS DE VIDEOJUEGOS -->
+      <div class="game-grid">
+
+        @for (game of filteredGames; track game.id) {
+          <article class="game-card">
+
+            <div class="game-art">
+
+              @if (game.image_url) {
+                <ion-img
+                  [src]="game.image_url"
+                  [alt]="game.title">
+                </ion-img>
+              } @else {
+                <div class="game-placeholder">
+                  <span class="placeholder-logo">PsyShop</span>
+                  <span class="placeholder-platform">
+                    {{ game.platform }}
+                  </span>
+                  <span class="placeholder-title">
+                    {{ game.title }}
+                  </span>
+                  <span class="placeholder-line"></span>
+                </div>
+              }
+
+              <span class="platform-badge">
+                {{ game.platform }}
+              </span>
+            </div>
+
+            <div class="game-info">
+
+              <p class="game-genre">
+                {{ game.genre || 'Videojuego' }}
+              </p>
+
+              <h3>{{ game.title }}</h3>
+
+              @if (game.description) {
+                <p class="game-description">
+                  {{ game.description }}
+                </p>
+              }
+
+              <div class="game-footer">
+                <div>
+                  <span class="price-label">PRECIO</span>
+
+                  <strong class="game-price">
+                    {{ game.price | currency:'USD' }}
+                  </strong>
+                </div>
+
+                <span
+                  class="stock-badge"
+                  [class.out-of-stock]="game.stock <= 0">
+                  {{ game.stock > 0 ? 'Disponible' : 'Agotado' }}
+                </span>
+              </div>
+
+              <ion-button
+                expand="block"
+                [routerLink]="['/game-detail', game.id]"
+                class="details-button">
+                VER DETALLES
+              </ion-button>
+
+              <ion-button
+                expand="block"
+                fill="outline"
+                class="details-button"
+                (click)="agregarAlCarrito(game)">
+                <ion-icon name="cart-outline" slot="start"></ion-icon>
+                AGREGAR AL CARRITO
+              </ion-button>
+
+            </div>
+          </article>
+        }
+
+      </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="store-footer">
+      <span class="dark">
+        Psy<span class="brand-accent">Shop</span>
+      </span>
+
+      <p>Tu próxima aventura comienza aquí.</p>
+    </footer>
+
+  </main>
+</ion-content>

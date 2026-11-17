@@ -1,0 +1,449 @@
+/* =========================================
+   PSYSHOP - CABECERA Y NAVEGACIÓN
+========================================= */
+
+
+/* =========================================
+   1. CABECERA PRINCIPAL
+========================================= */
+
+ion-header {
+  position: relative;
+  z-index: 10;
+  box-shadow: none;
+}
+
+.main-toolbar {
+  --background: #0b0b12;
+  --color: #ffffff;
+  --border-color: #292538;
+  --min-height: 68px;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================================
+   2. MARCA PSYSHOP
+========================================= */
+
+.brand-title {
+  padding-left: 16px;
+  margin: 0;
+  text-align: left;
+  flex: 1;
+}
+
+.brand-name {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.brand-name::first-letter {
+  color: #a78bfa;
+}
+
+
+/* =========================================
+   3. BOTONES DE LA CABECERA
+========================================= */
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 9px;
+  margin-right: 12px;
+}
+
+.login-header-button,
+.register-header-button {
+  --background: #8b5cf6;
+  --background-hover: #7c3aed;
+  --background-activated: #6d28d9;
+  --color: #ffffff;
+  --box-shadow: 0 4px 12px rgba(139, 92, 246, 0.18);
+  --border-radius: 10px;
+
+  height: 37px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.2px;
+
+  transition: transform 0.2s ease;
+}
+
+.login-header-button:hover,
+.register-header-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   4. BOTÓN WHATSAPP DE LA CABECERA
+========================================= */
+
+.whatsapp-header-button {
+  --background: #25d366;
+  --background-hover: #20bd5a;
+  --background-activated: #128c46;
+  --color: #ffffff;
+  --box-shadow: 0 4px 15px rgba(37, 211, 102, 0.30);
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  width: 40px;
+  height: 40px;
+  margin: 0 2px 0 0;
+
+  transition: transform 0.2s ease;
+
+  ion-icon {
+    font-size: 23px;
+    color: #ffffff;
+  }
+}
+
+@media (hover: hover) {
+  .whatsapp-header-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* =========================================
+   5. BARRA DE NAVEGACIÓN INFERIOR
+========================================= */
+
+.psyshop-tab-bar {
+  --background: #11101a;
+  --color: #89849b;
+  --color-selected: #a78bfa;
+
+  min-height: 65px;
+  border-top: 1px solid #292538;
+  padding: 5px 3px;
+}
+
+.psyshop-tab-bar ion-tab-button {
+  --color: #89849b;
+  --color-selected: #a78bfa;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.psyshop-tab-bar ion-tab-button ion-icon {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+.psyshop-tab-bar ion-tab-button.tab-selected {
+  font-weight: 800;
+}
+
+
+/* =========================================
+   6. TABLETS Y COMPUTADORAS
+========================================= */
+
+@media (min-width: 768px) {
+
+  .main-toolbar {
+    --min-height: 72px;
+  }
+
+  .brand-name {
+    font-size: 27px;
+  }
+
+  .header-auth {
+    gap: 12px;
+    margin-right: 20px;
+  }
+
+  .login-header-button,
+  .register-header-button {
+    height: 40px;
+    font-size: 13px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+
+  .whatsapp-header-button {
+    width: 42px;
+    height: 42px;
+
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+
+  .psyshop-tab-bar {
+    min-height: 68px;
+  }
+
+  .psyshop-tab-bar ion-tab-button ion-icon {
+    font-size: 24px;
+  }
+}
+
+
+/* =========================================
+   7. CELULARES
+========================================= */
+
+@media (max-width: 480px) {
+
+  .main-toolbar {
+    --background: #0b0b12;
+    --color: #ffffff;
+    --border-color: #292538;
+    --min-height: 58px;
+  }
+
+  .brand-title {
+    padding-left: 12px;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+  }
+
+  .brand-name {
+    font-size: 21px;
+    font-weight: 900;
+  }
+
+  .header-auth {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 5px;
+  }
+
+  .login-header-button,
+  .register-header-button {
+    height: 33px;
+    font-size: 10px;
+    --padding-start: 8px;
+    --padding-end: 8px;
+  }
+
+  .whatsapp-header-button {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    margin-right: 1px;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  .psyshop-tab-bar {
+    min-height: 60px;
+  }
+
+  .psyshop-tab-bar ion-tab-button {
+    font-size: 9px;
+  }
+
+  .psyshop-tab-bar ion-tab-button ion-icon {
+    font-size: 20px;
+  }
+}
+
+
+/* =========================================
+   8. ACCESIBILIDAD
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .login-header-button,
+  .register-header-button,
+  .whatsapp-header-button {
+    transition: none;
+  }
+  /* =========================================
+   PSYSHOP - RESPONSIVE AVANZADO
+========================================= */
+
+/* Evitar desbordamientos */
+ion-header,
+ion-toolbar,
+ion-tabs,
+.psyshop-tab-bar {
+  width: 100%;
+  max-width: 100%;
+}
+
+.main-toolbar {
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+/* Cabecera en pantallas grandes */
+@media (min-width: 1024px) {
+  .main-toolbar {
+    --min-height: 76px;
+  }
+
+  .brand-title {
+    padding-left: 28px;
+  }
+
+  .brand-name {
+    font-size: 28px;
+  }
+
+  .header-auth {
+    gap: 12px;
+    margin-right: 26px;
+  }
+
+  .psyshop-tab-bar {
+    min-height: 70px;
+  }
+
+  .psyshop-tab-bar ion-tab-button {
+    font-size: 12px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .brand-name {
+    font-size: 23px;
+  }
+
+  .header-auth {
+    gap: 7px;
+    margin-right: 8px;
+  }
+
+  .login-header-button,
+  .register-header-button {
+    font-size: 11px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+
+  .psyshop-tab-bar {
+    min-height: 64px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 599px) {
+  .main-toolbar {
+    --min-height: 58px;
+    --padding-start: 4px;
+    --padding-end: 4px;
+  }
+
+  .brand-title {
+    padding-left: 8px;
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-size: 19px;
+    letter-spacing: -0.8px;
+  }
+
+  .header-auth {
+    gap: 3px;
+    margin-right: 3px;
+  }
+
+  .login-header-button,
+  .register-header-button {
+    height: 32px;
+    font-size: 9px;
+    --padding-start: 6px;
+    --padding-end: 6px;
+  }
+
+  .whatsapp-header-button {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+
+    ion-icon {
+      font-size: 19px;
+    }
+  }
+
+  .psyshop-tab-bar {
+    min-height: 59px;
+    padding: 4px 1px;
+  }
+
+  .psyshop-tab-bar ion-tab-button {
+    min-width: 0;
+    font-size: 9px;
+  }
+
+  .psyshop-tab-bar ion-tab-button ion-icon {
+    font-size: 19px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 360px) {
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .header-auth {
+    gap: 2px;
+  }
+
+  .login-header-button,
+  .register-header-button {
+    font-size: 8px;
+    --padding-start: 4px;
+    --padding-end: 4px;
+  }
+
+  .whatsapp-header-button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .psyshop-tab-bar ion-tab-button ion-icon {
+    font-size: 18px;
+  }
+
+  .psyshop-tab-bar ion-tab-button {
+    font-size: 8px;
+  }
+}
+
+/* Pantallas táctiles: evitar efectos hover innecesarios */
+@media (hover: none) {
+  .login-header-button:hover,
+  .register-header-button:hover,
+  .whatsapp-header-button:hover {
+    transform: none;
+  }
+}
+
+/* Reducir animaciones si el usuario lo solicita */
+@media (prefers-reduced-motion: reduce) {
+  .login-header-button,
+  .register-header-button,
+  .whatsapp-header-button {
+    transition: none !important;
+  }
+}
+}

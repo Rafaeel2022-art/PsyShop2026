@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar class="main-toolbar">
+
+    <ion-title slot="start" class="brand-title">
+      <span class="brand-name">PsyShop</span>
+    </ion-title>
+
+    <ion-buttons slot="end" class="header-auth">
+
+      <!-- WHATSAPP -->
+      <ion-button
+        class="whatsapp-header-button"
+        href="https://wa.me/50363154086?text=Hola%2C%20quiero%20obtener%20informaci%C3%B3n%20sobre%20los%20productos%20de%20PsyShop."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+
+        <ion-icon name="logo-whatsapp"></ion-icon>
+
+      </ion-button>
+
+      <!-- USUARIO NO AUTENTICADO -->
+      <ng-container *ngIf="!(authState$ | async); else loggedInButtons">
+
+        <ion-button
+          fill="solid"
+          class="login-header-button"
+          routerLink="/tabs/perfil"
+          [queryParams]="{ mode: 'login' }">
+          Iniciar sesión
+        </ion-button>
+
+        <ion-button
+          fill="solid"
+          class="register-header-button"
+          routerLink="/tabs/perfil"
+          [queryParams]="{ mode: 'register' }">
+          Registrarse
+        </ion-button>
+
+      </ng-container>
+
+      <!-- USUARIO AUTENTICADO -->
+      <ng-template #loggedInButtons>
+        <ion-button
+          fill="solid"
+          class="register-header-button"
+          [disabled]="logoutLoading"
+          (click)="logout()">
+
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+
+          {{ logoutLoading ? 'Cerrando...' : 'Cerrar sesión' }}
+
+        </ion-button>
+      </ng-template>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom" class="psyshop-tab-bar">
+
+    <ion-tab-button tab="inicio" href="/tabs/inicio">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="catalogo" href="/tabs/catalogo">
+      <ion-icon name="game-controller-outline"></ion-icon>
+      <ion-label>Catálogo</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="carrito" href="/tabs/carrito">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-label>Carrito</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="pedidos" href="/tabs/pedidos">
+      <ion-icon name="receipt-outline"></ion-icon>
+      <ion-label>Pedidos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil" href="/tabs/perfil">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

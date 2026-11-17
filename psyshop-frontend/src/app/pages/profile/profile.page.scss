@@ -1,0 +1,653 @@
+:host {
+  display: block;
+}
+
+/* El header ya lo muestra la barra de pestañas */
+ion-header {
+  display: none;
+}
+
+/* ===== FONDO CON RESPLANDOR ===== */
+
+.profile-content {
+  --background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(139, 92, 246, 0.28), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 100% 85%, rgba(91, 33, 182, 0.2), transparent 70%),
+    #09090f;
+  position: relative;
+}
+
+.profile-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 44px 20px 56px;
+}
+
+/* ===== PRESENTACIÓN ===== */
+
+.brand-section {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(221, 214, 254, 0.3);
+  border-radius: 26px;
+  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 50%, #5b21b6 100%);
+  box-shadow:
+    0 0 0 6px rgba(139, 92, 246, 0.1),
+    0 14px 40px rgba(124, 58, 237, 0.45);
+}
+
+.brand-icon ion-icon {
+  color: #ffffff;
+  font-size: 44px;
+}
+
+.brand-section .eyebrow {
+  margin: 0 0 12px;
+}
+
+.brand-section h1 {
+  max-width: 440px;
+  margin: 0 auto 14px;
+  color: #ffffff;
+  font-size: clamp(28px, 6vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.15;
+}
+
+.subtitle {
+  max-width: 380px;
+  margin: 0 auto;
+  color: var(--ps-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ===== TARJETA DE CUENTA ===== */
+
+.account-card {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(30, 26, 46, 0.92), rgba(16, 15, 24, 0.96));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* línea de luz superior */
+.account-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+}
+
+.account-card ion-card-content {
+  padding: 28px 26px 30px;
+}
+
+/* ===== SELECTOR LOGIN / REGISTRO ===== */
+
+.auth-segment {
+  padding: 5px;
+  border: 1px solid #2c2740;
+  border-radius: 14px;
+  background: #0c0b13;
+}
+
+.auth-segment ion-segment-button {
+  --border-radius: 10px;
+  --indicator-color: linear-gradient(135deg, #7c3aed, #6d28d9);
+  --color: var(--ps-muted);
+  --color-checked: #ffffff;
+  --indicator-box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+/* ===== ENCABEZADO DEL FORMULARIO ===== */
+
+.form-heading {
+  margin: 30px 0 24px;
+}
+
+.form-heading h2,
+.logged-card h2 {
+  margin: 0 0 9px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.form-heading p {
+  margin: 0;
+  color: var(--ps-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ===== CAMPOS ===== */
+
+.field-group {
+  margin-bottom: 20px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #e4e4ee;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.custom-input {
+  --background: #0c0b13;
+  --color: #ffffff;
+  --placeholder-color: #6f6a82;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --highlight-color-focused: transparent;
+  min-height: 52px;
+  border: 1px solid #2c2740;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-input:hover {
+  border-color: #3d3560;
+}
+
+.custom-input:focus-within {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18);
+}
+
+/* ===== BOTÓN DE ACCESO ===== */
+
+.submit-button {
+  --background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  --background-hover: linear-gradient(135deg, #9b72f8, #7c3aed);
+  --background-activated: #5b21b6;
+  --border-radius: 13px;
+  --box-shadow: 0 10px 28px rgba(124, 58, 237, 0.35);
+  min-height: 52px;
+  margin-top: 26px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ===== MENSAJES ===== */
+
+.feedback {
+  margin: 14px 0 0;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.error-feedback {
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.08);
+  color: #fca5a5;
+}
+
+.success-feedback {
+  border: 1px solid rgba(134, 239, 172, 0.25);
+  background: rgba(134, 239, 172, 0.08);
+  color: #86efac;
+}
+
+/* ===== PERFIL CON SESIÓN INICIADA ===== */
+
+.logged-card {
+  text-align: center;
+}
+
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  margin: 4px auto 22px;
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  border-radius: 50%;
+  background: radial-gradient(circle, #3a2466, #1f1433);
+  box-shadow:
+    0 0 0 7px rgba(139, 92, 246, 0.1),
+    0 0 36px rgba(139, 92, 246, 0.3);
+}
+
+.user-avatar ion-icon {
+  color: #ddd6fe;
+  font-size: 62px;
+}
+
+.logged-card > .eyebrow {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.logged-card h2 {
+  overflow-wrap: anywhere;
+}
+
+.user-email {
+  margin: 0 0 22px;
+  color: var(--ps-muted);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.account-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  margin: 20px auto 26px;
+  padding: 10px 18px;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: 30px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #ddd6fe;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.account-status ion-icon {
+  font-size: 17px;
+}
+
+.logged-card ion-button {
+  --border-radius: 13px;
+  min-height: 50px;
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+/* ===== NOTA DE SEGURIDAD ===== */
+
+.security-note {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  margin: 26px 14px 0;
+  color: var(--ps-faint);
+}
+
+.security-note ion-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--ps-accent);
+  font-size: 18px;
+}
+
+.security-note p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 28px 15px 38px;
+  }
+
+  .brand-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 22px;
+  }
+
+  .brand-icon ion-icon {
+    font-size: 38px;
+  }
+
+  .brand-section {
+    margin-bottom: 26px;
+  }
+
+  .account-card {
+    border-radius: 20px;
+  }
+
+  .account-card ion-card-content {
+    padding: 22px 18px 24px;
+  }
+
+  .form-heading {
+    margin: 26px 0 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-container {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .account-card ion-card-content {
+    padding: 18px 14px;
+  }
+
+  .brand-section h1 {
+    font-size: 27px;
+  }
+  /* =========================================
+   PSYSHOP - MEJORAS PREMIUM DEL PERFIL
+========================================= */
+
+/* Presentación principal */
+.brand-icon {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #a78bfa, #7c3aed 55%, #4c1d95);
+  box-shadow:
+    0 0 0 7px rgba(139, 92, 246, 0.08),
+    0 15px 40px rgba(124, 58, 237, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(124, 58, 237, 0.45);
+}
+
+.brand-section .eyebrow,
+.logged-card .eyebrow {
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+/* Tarjeta principal */
+.account-card {
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 26px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(139, 92, 246, 0.10),
+      transparent 65%
+    ),
+    linear-gradient(145deg, #1c1929, #100f18);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.account-card:hover {
+  border-color: rgba(167, 139, 250, 0.42);
+}
+
+/* Selector de acceso */
+.auth-segment {
+  padding: 5px;
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 15px;
+  background: #0b0a12;
+}
+
+.auth-segment ion-segment-button {
+  --indicator-color: #7c3aed;
+  --border-radius: 11px;
+  min-height: 46px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Encabezado del formulario */
+.form-heading h2,
+.logged-card h2 {
+  font-size: clamp(22px, 4vw, 26px);
+  letter-spacing: -0.7px;
+}
+
+/* Campos de entrada */
+.custom-input {
+  --background: rgba(9, 9, 15, 0.85);
+  --padding-start: 17px;
+  --padding-end: 17px;
+  min-height: 54px;
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 14px;
+}
+
+.custom-input:focus-within {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.13);
+}
+
+/* Botón principal */
+.submit-button {
+  --background: linear-gradient(110deg, #8b5cf6, #6d28d9);
+  --background-hover: linear-gradient(110deg, #a78bfa, #7c3aed);
+  --background-activated: #5b21b6;
+  --border-radius: 14px;
+  --box-shadow: 0 9px 25px rgba(124, 58, 237, 0.28);
+  min-height: 54px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Avatar del cliente */
+.user-avatar {
+  width: 108px;
+  height: 108px;
+  border: 2px solid rgba(196, 181, 253, 0.55);
+  background: linear-gradient(145deg, #4c1d95, #1e1335);
+  box-shadow:
+    0 0 0 8px rgba(139, 92, 246, 0.08),
+    0 12px 35px rgba(124, 58, 237, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.04);
+}
+
+.user-avatar ion-icon {
+  font-size: 70px;
+}
+
+/* Estado de cuenta */
+.account-status {
+  border: 1px solid rgba(167, 139, 250, 0.30);
+  background: rgba(139, 92, 246, 0.13);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Botón cerrar sesión */
+.logged-card ion-button {
+  --border-radius: 14px;
+  --border-color: rgba(248, 113, 113, 0.45);
+  --color: #fca5a5;
+  min-height: 52px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.logged-card ion-button:hover {
+  --background: rgba(248, 113, 113, 0.09);
+  transform: translateY(-2px);
+}
+
+/* Nota de seguridad */
+.security-note {
+  padding: 14px 16px;
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  border-radius: 14px;
+  background: rgba(139, 92, 246, 0.045);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .profile-container {
+    max-width: 580px;
+    padding-top: 55px;
+  }
+
+  .brand-section {
+    margin-bottom: 38px;
+  }
+
+  .account-card ion-card-content {
+    padding: 32px;
+  }
+}
+
+/* Teléfonos */
+@media (max-width: 600px) {
+  .profile-container {
+    padding-top: 30px;
+  }
+
+  .account-card {
+    border-radius: 22px;
+  }
+
+  .account-card ion-card-content {
+    padding: 23px 19px 26px;
+  }
+
+  .submit-button {
+    min-height: 52px;
+  }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 360px) {
+  .profile-container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .account-card ion-card-content {
+    padding: 19px 14px;
+  }
+
+  .auth-segment ion-segment-button {
+    font-size: 11px;
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .brand-icon,
+  .account-card,
+  .user-avatar,
+  .submit-button,
+  .logged-card ion-button {
+    transition: none;
+  }
+}
+
+/* =========================================
+   PSYSHOP - FORMULARIOS DE MI CUENTA
+========================================= */
+
+.profile-container {
+  max-width: 620px;
+}
+
+/* Separación entre las tarjetas */
+.profile-container ion-card + ion-card {
+  margin-top: 22px;
+}
+
+/* Encabezados de edición */
+.form-heading {
+  text-align: left;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+.form-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+.form-heading ion-icon {
+  color: #a78bfa;
+  font-size: 23px;
+}
+
+/* Etiquetas */
+.field-label {
+  color: #ddd6fe;
+  font-weight: 700;
+}
+
+/* Campos */
+.custom-input {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Botones de actualización */
+.submit-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Mensajes */
+.feedback {
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+/* Separación del cierre de sesión */
+.logged-card {
+  padding-top: 8px;
+}
+
+/* Adaptación móvil */
+@media (max-width: 600px) {
+  .profile-container {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .form-heading {
+    margin-top: 20px;
+  }
+
+  .account-card ion-card-content {
+    padding: 21px 17px;
+  }
+}
+
+}

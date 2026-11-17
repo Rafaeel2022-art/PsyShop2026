@@ -1,0 +1,100 @@
+
+/*
+ * PsyShop — Tema global
+ * Fondo oscuro, tarjetas y acentos morados.
+ */
+
+:root {
+  /** Colores principales **/
+  --ion-color-primary: #8b5cf6;
+  --ion-color-primary-rgb: 139, 92, 246;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #7a51d8;
+  --ion-color-primary-tint: #976df7;
+
+  --ion-color-secondary: #a78bfa;
+  --ion-color-secondary-rgb: 167, 139, 250;
+  --ion-color-secondary-contrast: #171522;
+  --ion-color-secondary-contrast-rgb: 23, 21, 34;
+  --ion-color-secondary-shade: #937ad9;
+  --ion-color-secondary-tint: #b09afa;
+
+  /** Fondo y superficies **/
+  --ion-background-color: #0f0d15;
+  --ion-background-color-rgb: 15, 13, 21;
+
+  --ion-text-color: #f8fafc;
+  --ion-text-color-rgb: 248, 250, 252;
+
+  --ion-card-background: #1b1824;
+  --ion-toolbar-background: #171522;
+  --ion-item-background: #1b1824;
+
+  /** Bordes y detalles **/
+  --ion-border-color: #332d42;
+  --ion-color-step-50: #191621;
+  --ion-color-step-100: #24202e;
+  --ion-color-step-150: #2f293b;
+  --ion-color-step-200: #393248;
+  --ion-color-step-250: #443b55;
+  --ion-color-step-300: #4f4562;
+  --ion-color-step-350: #5a4e6f;
+  --ion-color-step-400: #65587c;
+  --ion-color-step-450: #706189;
+  --ion-color-step-500: #7b6b96;
+}
+
+/** Fondo general de la aplicación **/
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+/** Barras superiores **/
+ion-toolbar {
+  --background: #171522;
+  --color: #f8fafc;
+  --border-color: #332d42;
+}
+
+/** Tarjetas **/
+ion-card {
+  --background: #1b1824;
+  --color: #f8fafc;
+  border: 1px solid #332d42;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+}
+
+/** Campos de texto **/
+ion-input,
+ion-textarea,
+ion-select {
+  --background: #1b1824;
+  --color: #f8fafc;
+  --placeholder-color: #9690a5;
+  --highlight-color-focused: #8b5cf6;
+}
+
+/** Botones **/
+ion-button {
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+/** Barra inferior de navegación **/
+ion-tab-bar {
+  --background: #171522;
+  --color: #9690a5;
+  --color-selected: #a78bfa;
+  border-top: 1px solid #332d42;
+}
+
+/** Transiciones suaves **/
+ion-button,
+ion-card {
+  transition: background-color 180ms ease,
+              border-color 180ms ease,
+              box-shadow 180ms ease;
+}

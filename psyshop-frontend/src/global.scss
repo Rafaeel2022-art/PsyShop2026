@@ -1,0 +1,227 @@
+/*
+ * PsyShop — Estilos globales
+ * Aquí viven la paleta, la tipografía y los estilos compartidos.
+ * Todas las páginas usan las variables --ps-* definidas abajo.
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* La tienda es siempre oscura */
+@import "@ionic/angular/css/palettes/dark.always.css";
+
+
+:root {
+  /* ===== PALETA PSYSHOP ===== */
+  --ps-bg: #0b0a12;
+  --ps-surface: #13111c;
+  --ps-card: #1a1726;
+  --ps-card-2: #221e32;
+  --ps-border: #2e2840;
+  --ps-border-soft: rgba(167, 139, 250, 0.18);
+
+  --ps-accent: #a78bfa;
+  --ps-accent-soft: #c4b5fd;
+  --ps-primary: #8b5cf6;
+  --ps-primary-dark: #7c3aed;
+  --ps-primary-darker: #6d28d9;
+  --ps-gradient: linear-gradient(135deg, #8b5cf6, #6d28d9);
+
+  --ps-text: #f8fafc;
+  --ps-muted: #a39db6;
+  --ps-faint: #7d7790;
+
+  --ps-success: #6ee7a0;
+  --ps-danger: #fca5a5;
+
+  --ps-radius-sm: 10px;
+  --ps-radius-md: 14px;
+  --ps-radius-lg: 20px;
+  --ps-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --ps-glow: 0 8px 28px rgba(124, 58, 237, 0.3);
+
+  /* ===== VARIABLES DE IONIC ===== */
+  --ion-font-family: 'Poppins', sans-serif;
+
+  --ion-color-primary: #8b5cf6;
+  --ion-color-primary-rgb: 139, 92, 246;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #7a51d8;
+  --ion-color-primary-tint: #976df7;
+
+  --ion-color-secondary: #a78bfa;
+  --ion-color-secondary-rgb: 167, 139, 250;
+  --ion-color-secondary-contrast: #171522;
+  --ion-color-secondary-contrast-rgb: 23, 21, 34;
+  --ion-color-secondary-shade: #937ad9;
+  --ion-color-secondary-tint: #b09afa;
+
+  --ion-background-color: #0b0a12;
+  --ion-background-color-rgb: 11, 10, 18;
+  --ion-text-color: #f8fafc;
+  --ion-text-color-rgb: 248, 250, 252;
+
+  --ion-card-background: #1a1726;
+  --ion-toolbar-background: #13111c;
+  --ion-item-background: #1a1726;
+  --ion-border-color: #2e2840;
+
+  --ion-color-step-50: #151221;
+  --ion-color-step-100: #1d1a2b;
+  --ion-color-step-150: #272337;
+  --ion-color-step-200: #322d44;
+  --ion-color-step-250: #3d3752;
+  --ion-color-step-300: #494260;
+  --ion-color-step-350: #554d6d;
+  --ion-color-step-400: #61587b;
+  --ion-color-step-450: #6d6489;
+  --ion-color-step-500: #7a7096;
+}
+
+/* ===== BASE ===== */
+
+body {
+  background: var(--ps-bg);
+  color: var(--ps-text);
+}
+
+ion-content {
+  --background: var(--ps-bg);
+  --color: var(--ps-text);
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* ===== ELEMENTOS COMPARTIDOS (disponibles en todas las páginas) ===== */
+
+.eyebrow {
+  display: inline-block;
+  color: var(--ps-accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.brand {
+  color: var(--ps-text);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.brand-accent {
+  color: var(--ps-accent);
+}
+
+/* ===== BARRAS ===== */
+
+ion-toolbar {
+  --background: var(--ps-surface);
+  --color: var(--ps-text);
+  --border-color: var(--ps-border);
+}
+
+ion-title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+ion-tab-bar {
+  --background: var(--ps-surface);
+  --color: var(--ps-faint);
+  --color-selected: var(--ps-accent);
+  border-top: 1px solid var(--ps-border);
+}
+
+/* ===== TARJETAS ===== */
+
+ion-card {
+  --background: var(--ps-card);
+  --color: var(--ps-text);
+  margin: 12px 0;
+  border: 1px solid var(--ps-border);
+  border-radius: var(--ps-radius-lg);
+  box-shadow: var(--ps-shadow);
+}
+
+/* ===== BOTONES ===== */
+
+ion-button {
+  --border-radius: var(--ps-radius-sm);
+  --box-shadow: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
+
+/* Botón principal reutilizable: class="primary-button" */
+.primary-button {
+  --background: var(--ps-primary-dark);
+  --background-hover: var(--ps-primary);
+  --background-activated: var(--ps-primary-darker);
+  --color: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: var(--ps-glow);
+  font-weight: 700;
+}
+
+/* ===== CAMPOS DE TEXTO ===== */
+
+ion-input,
+ion-textarea,
+ion-select {
+  --background: var(--ps-card-2);
+  --color: var(--ps-text);
+  --placeholder-color: var(--ps-faint);
+  --highlight-color-focused: var(--ps-primary);
+}
+
+/* ===== ACCESIBILIDAD ===== */
+
+ion-button:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ps-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== DETALLES ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 10px;
+}
+
+ion-button,
+ion-card {
+  transition: background-color 180ms ease,
+              border-color 180ms ease,
+              box-shadow 180ms ease;
+}

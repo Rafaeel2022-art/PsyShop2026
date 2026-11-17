@@ -1,0 +1,217 @@
+
+<ion-content [fullscreen]="true" class="home-content">
+
+  <!-- PORTADA PRINCIPAL -->
+  <section class="hero">
+
+    <div class="hero-content">
+      <span class="eyebrow">BIENVENIDO A PSYSHOP</span>
+
+      <h1>
+        Tu próxima<br>
+        <span>gran aventura</span><br>
+        comienza aquí.
+      </h1>
+
+      <p>
+        Descubre videojuegos increíbles y encuentra
+        tu próxima experiencia favorita.
+      </p>
+
+      <div class="hero-actions">
+
+        <ion-button
+          class="primary-button"
+          routerLink="/tabs/catalogo">
+          Explorar catálogo
+          <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+
+        <ion-button
+          class="whatsapp-button"
+          href="https://wa.me/50363154086?text=Hola%2C%20quiero%20obtener%20informaci%C3%B3n%20sobre%20los%20productos%20de%20PsyShop."
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contactar a PsyShop por WhatsApp">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-button>
+
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000"
+        alt="Experiencia gaming">
+    </div>
+
+    <div class="hero-overlay"></div>
+
+  </section>
+
+  
+  <!-- VIDEOJUEGOS DESTACADOS -->
+  <section class="featured-section">
+
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">LO MEJOR DEL GAMING</span>
+        <h2>Destacados del año</h2>
+        <p>Descubre los videojuegos que no pueden faltar en tu colección.</p>
+      </div>
+
+      <ion-icon name="trophy-outline" class="featured-trophy"></ion-icon>
+    </div>
+
+    @if (loadingFeatured) {
+      <div class="featured-message">
+        Cargando videojuegos destacados...
+      </div>
+    } @else if (featuredError) {
+      <div class="featured-message">
+        No pudimos cargar los videojuegos. Inténtalo más tarde.
+      </div>
+    } @else if (featuredGames.length > 0) {
+
+      <div class="featured-carousel">
+
+        @for (game of featuredGames; track game.id) {
+          <article class="featured-card">
+
+            <div class="featured-image">
+              @if (game.image_url) {
+                <img [src]="game.image_url" [alt]="game.title">
+              } @else {
+                <div class="featured-no-image">
+                  <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+              }
+
+              <span class="featured-badge">DESTACADO DEL AÑO</span>
+            </div>
+
+            <div class="featured-info">
+              <span class="featured-platform">{{ game.platform }}</span>
+
+              <h3>{{ game.title }}</h3>
+
+              <div class="featured-bottom">
+                <strong>${{ formatPrice(game.price) }}</strong>
+
+<ion-button
+  class="featured-button"
+  [routerLink]="['/game-detail', game.id]"
+  aria-label="Ver detalles de {{ game.title }}">
+  <ion-icon name="arrow-forward-outline"></ion-icon>
+</ion-button>
+              </div>
+            </div>
+
+          </article>
+        }
+
+      </div>
+
+    } @else {
+      <div class="featured-message">
+        Próximamente tendremos videojuegos destacados.
+      </div>
+    }
+
+    <ion-button
+      class="featured-catalog-button"
+      expand="block"
+      routerLink="/tabs/catalogo">
+      Explorar todos los videojuegos
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="benefits">
+
+    <div class="benefit">
+      <ion-icon name="game-controller-outline"></ion-icon>
+      <div>
+        <strong>Juegos físicos</strong>
+        <span>Para tu consola favorita</span>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <ion-icon name="shield-checkmark-outline"></ion-icon>
+      <div>
+        <strong>Compra segura</strong>
+        <span>Experiencia confiable</span>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <ion-icon name="albums-outline"></ion-icon>
+      <div>
+        <strong>Gran variedad</strong>
+        <span>Distintos géneros y consolas</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categories">
+
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">EXPLORA PSYSHOP</span>
+        <h2>Encuentra tu estilo</h2>
+      </div>
+    </div>
+
+    <div class="category-grid">
+
+      <article class="category-card action">
+        <ion-icon name="flash-outline"></ion-icon>
+        <h3>Acción</h3>
+        <span>Aventuras intensas</span>
+      </article>
+
+      <article class="category-card sports">
+        <ion-icon name="football-outline"></ion-icon>
+        <h3>Deportes</h3>
+        <span>Vive la competencia</span>
+      </article>
+
+      <article class="category-card racing">
+        <ion-icon name="car-sport-outline"></ion-icon>
+        <h3>Carreras</h3>
+        <span>Velocidad al máximo</span>
+      </article>
+
+      <article class="category-card adventure">
+        <ion-icon name="compass-outline"></ion-icon>
+        <h3>Aventura</h3>
+        <span>Descubre nuevos mundos</span>
+      </article>
+
+    </div>
+
+    <ion-button
+      expand="block"
+      class="catalog-button"
+      routerLink="/tabs/catalogo">
+      Ver todos los videojuegos
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+
+  </section>
+
+  <!-- MENSAJE FINAL -->
+  <section class="closing">
+    <ion-icon name="trophy-outline"></ion-icon>
+    <h2>Grandes juegos.<br>Momentos inolvidables.</h2>
+    <p>
+      Tu próxima experiencia gamer te está esperando.
+    </p>
+  </section>
+
+</ion-content>

@@ -1,0 +1,120 @@
+
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>PsyShop — Finalizar compra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="checkout-container">
+    <section class="checkout-heading">
+      <span class="eyebrow">ÚLTIMO PASO</span>
+      <h1>Finalizar compra</h1>
+      <p>Completa tus datos para registrar tu pedido.</p>
+    </section>
+
+    @if (items.length === 0) {
+      <section class="checkout-card empty-state">
+        <h2>Tu carrito está vacío</h2>
+        <p>Agrega videojuegos antes de continuar.</p>
+        <ion-button routerLink="/tabs/catalogo">
+          Volver al catálogo
+        </ion-button>
+      </section>
+    } @else {
+      <div class="checkout-layout">
+        <section class="checkout-card">
+          <h2>Datos de entrega</h2>
+
+          <form (ngSubmit)="enviarPedido()">
+            <ion-input
+              label="Nombre completo"
+              labelPlacement="stacked"
+              name="customer_name"
+              [(ngModel)]="customer_name"
+              autocomplete="name"
+              required>
+            </ion-input>
+
+            <ion-input
+              label="Correo electrónico"
+              labelPlacement="stacked"
+              name="customer_email"
+              type="email"
+              [(ngModel)]="customer_email"
+              autocomplete="email"
+              required>
+            </ion-input>
+
+            <ion-input
+              label="Teléfono"
+              labelPlacement="stacked"
+              name="customer_phone"
+              type="tel"
+              [(ngModel)]="customer_phone"
+              autocomplete="tel"
+              required>
+            </ion-input>
+
+            <ion-textarea
+              label="Dirección de entrega"
+              labelPlacement="stacked"
+              name="delivery_address"
+              [(ngModel)]="delivery_address"
+              rows="4"
+              required>
+            </ion-textarea>
+
+            @if (errorMessage) {
+              <ion-text color="danger">
+                <p class="error-message">{{ errorMessage }}</p>
+              </ion-text>
+            }
+
+            <ion-button
+              expand="block"
+              type="submit"
+              [disabled]="submitting || items.length === 0"
+              class="checkout-button">
+              @if (submitting) {
+                <ion-spinner name="crescent"></ion-spinner>
+                Registrando pedido...
+              } @else {
+                Confirmar pedido
+              }
+            </ion-button>
+          </form>
+        </section>
+
+        <aside class="checkout-card order-summary">
+          <h2>Resumen del pedido</h2>
+
+          @for (item of items; track item.game.id) {
+            <div class="summary-product">
+              <div>
+                <strong>{{ item.game.title }}</strong>
+                <p>{{ item.quantity }} ×
+                  {{ item.game.price | currency:'USD':'symbol':'1.2-2' }}
+                </p>
+              </div>
+
+              <strong>
+                {{ precioSubtotal(item.game.price, item.quantity) | currency:'USD':'symbol':'1.2-2' }}
+              </strong>
+            </div>
+          }
+
+          <div class="summary-total">
+            <span>Total provisional</span>
+            <strong>{{ total | currency:'USD':'symbol':'1.2-2' }}</strong>
+          </div>
+
+          <p class="summary-note">
+            El total definitivo y las existencias se validarán en el servidor.
+            El pedido quedará pendiente; este formulario no procesa pagos.
+          </p>
+        </aside>
+      </div>
+    }
+  </main>
+</ion-content>

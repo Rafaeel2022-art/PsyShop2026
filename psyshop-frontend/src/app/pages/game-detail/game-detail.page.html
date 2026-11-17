@@ -1,0 +1,91 @@
+
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+<ion-back-button
+  defaultHref="/tabs/catalogo"
+  text="Volver">
+</ion-back-button>    </ion-buttons>
+
+    <ion-title>
+      <span class="brand">Psy<span class="brand-accent">Shop</span></span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="game-detail-content">
+
+  @if (loading) {
+    <div class="state-message">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando videojuego...</p>
+    </div>
+  } @else if (errorMessage) {
+    <div class="state-message">
+      <ion-text color="danger">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+
+  <ion-button routerLink="/tabs/catalogo">
+  Volver al catálogo
+</ion-button>
+    </div>
+  } @else if (game) {
+    <div class="detail-container">
+
+      <div class="game-cover">
+        @if (game.image_url) {
+          <ion-img
+            [src]="game.image_url"
+            [alt]="game.title">
+          </ion-img>
+        } @else {
+          <div class="cover-placeholder">
+            <span class="placeholder-brand">PsyShop</span>
+            <ion-text>{{ game.platform }}</ion-text>
+          </div>
+        }
+      </div>
+
+      <div class="game-information">
+        <p class="eyebrow">DETALLE DEL VIDEOJUEGO</p>
+
+        <h1>{{ game.title }}</h1>
+
+        <div class="game-tags">
+          <span>{{ game.platform }}</span>
+
+          @if (game.genre) {
+            <span>{{ game.genre }}</span>
+          }
+        </div>
+
+        <p class="description">
+          {{ game.description || 'No hay descripción disponible para este videojuego.' }}
+        </p>
+
+        <div class="price-section">
+          <span class="price-label">Precio</span>
+          <h2>{{ game.price | currency:'USD' }}</h2>
+        </div>
+
+        <div class="stock-information">
+          @if (game.stock > 0) {
+            <span class="stock-dot"></span>
+            <span>Disponible · {{ game.stock }} unidades</span>
+          } @else {
+            <span class="out-of-stock">Agotado</span>
+          }
+        </div>
+
+<ion-button
+  expand="block"
+  routerLink="/tabs/catalogo"
+  class="back-catalog-button">
+  Volver al catálogo
+</ion-button>
+      </div>
+
+    </div>
+  }
+</ion-content>
